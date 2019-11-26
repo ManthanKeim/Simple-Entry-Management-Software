@@ -38,3 +38,12 @@ Check Out who are already checked in
 <img alt="image_1" src="working/Screenshot 2019-11-26 at 5.01.24 PM.png" width="700px">
 
 Successfully Checked out
+
+### Libraries/Dependencies
+
+* flask_mysqldb
+* Flask
+* flask_ngrok
+* smtplib
+* datetime
+* etc. ( listed in requirements.txt)
