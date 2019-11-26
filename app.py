@@ -28,6 +28,7 @@ from selenium.webdriver.firefox.options import Options
 from flask_ngrok import run_with_ngrok
 import nexmo
 import smtplib
+from datetime import datetime
 
 
 profile_list = []
@@ -312,13 +313,14 @@ def submit_in():
     email_v = request.form['email']
     phone = request.form['phone_no']
     email = request.form['host_email']
-    in_time = request.form['in_time']
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     name_h = request.form['host_user_name']
     
-    
+    print(dt_string)
     cur = mysql.connection.cursor()
     
-    cur.execute("INSERT INTO visitors(name,email,Phone,Check_in,host_name) VALUES(%s,%s,%s,%s,%s)",(name1,email_v,phone,in_time,name_h))
+    cur.execute("INSERT INTO visitors(name,email,Phone,Check_in,host_name) VALUES(%s,%s,%s,%s,%s)",(name1,email_v,phone,dt_string,name_h))
     mysql.connection.commit()
     cur.close()
 #    print(phone)
@@ -337,8 +339,8 @@ def submit_in():
     
     server.login('manthankeim7@gmail.com', 'pfvwgdflwgczvugn')
         
-    subject = name1 + 'Checked in at ' + in_time
-    body = 'Dear' + name_h + ', ' + name1 + 'information are given below:' + 'Name: ' + name1 + 'Email:id: ' + email_v + 'Phone No: ' + phone + 'Check in time: ' + in_time + '. Hope you have a great meeting.'
+    subject = name1 + 'Checked in at ' + dt_string
+    body = 'Dear' + name_h + ', ' + name1 + 'information are given below:' + 'Name: ' + name1 + 'Email:id: ' + email_v + 'Phone No: ' + phone + 'Check in time: ' + dt_string + '. Hope you have a great meeting.'
     
     msg = f"Subject: {subject}\n\n{body}"
     
@@ -349,14 +351,12 @@ def submit_in():
                     
                     )
     flash("You are now Checked in" , 'success')
-    return render_template('postcheckin.html', name12 = name1)
+    return render_template('postcheckin.html', name12 = name1 + " Successfully Checked in on" + dt_string)
 
 
 
 @app.route('/checkout',methods=['POST'])
 def checkout():
-
-
     cur = mysql.connection.cursor()
     
     vis2= cur.execute("SELECT name from visitors")
@@ -364,16 +364,26 @@ def checkout():
     mysql.connection.commit()
     cur.close()
     
-    print(request.form.get("outlist"))
-    
     
     return render_template('checkout.html', visit = vis)
     
     
     
+@app.route('/checkout/submit',methods=['POST'])
+def submit_out():
+    now = datetime.now()
+    out_time = now.strftime("%d/%m/%Y %H:%M:%S")
+    print(out_time)
+    cur = mysql.connection.cursor()
     
-
-
+    vis2= cur.execute("SELECT name from visitors")
+    vis = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    
+    out_name = request.form.get("outlist")
+    
+    return render_template('postcheckout.html', name13 = out_name +  'Successfully checked out on' + out_time )
     
 
 #    try:
@@ -385,7 +395,7 @@ def checkout():
 if __name__ == "__main__":
 #    app.run(port = 8010, debug=True)
     app.secret_key=b'\xfc\xed6x\x12u\xe3\xf2\x7f07Z\\\xd6\x83\xe3'
-    app.run(port=8087)
+    app.run(port=8092)
     
 #    options = Options()
 #    #options.add_argument("--headless")

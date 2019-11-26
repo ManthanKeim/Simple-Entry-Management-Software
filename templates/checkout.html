@@ -66,7 +66,7 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     
-    <form action="{{ url_for('checkout')}}"method="post" id="outform"
+    <form action="{{ url_for('submit_out')}}"method="post" id="outform"
         enctype="multipart/form-data">
 <!--        <div class="dropdown">-->
 <!--          <button onclick="myFunction()" class="dropbtn">Dropdown</button>-->
@@ -93,7 +93,6 @@
         <br>
         <br>
         <br>
-        <input type="text" name="user_name" placeholder="Check Out Time" required="required" />
 <!--        <input type="file" name="file" accept="image/*" mutiple>-->
 <!--        <input type="button" name="file2" onclick="snap()" value="Snap">-->
         <button type="submit" value='upload' class="btn btn-primary btn-block btn-large">Submit</button>
