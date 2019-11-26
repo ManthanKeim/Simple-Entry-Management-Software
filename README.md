@@ -23,6 +23,8 @@ to limitation of resources I'm unable to send SMS, but provided with
 the resources and the available phone number. This web-app is tested
 and can be extended for global user.
 
+I used the name Innovacer just to show that this app is not owned by
+any employee of Innovaccer. So I intentionally chose the name Innovacer.
 ### Project Screenshots on LocalHost
 
 <img alt="image_1" src="working/Screenshot 2019-11-26 at 5.00.21 PM.png" width="700px">
