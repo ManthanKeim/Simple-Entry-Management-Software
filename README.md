@@ -55,3 +55,8 @@ Successfully Checked out
 * smtplib
 * datetime
 * etc. ( listed in requirements.txt)
+
+### POST NOTE
+
+This is most simple app I could have made using the least resources. Unfortunately, my message credits of Twilio are all spent on previous hackathons, but still I've added the code for the message api. Ofcourse, there are some future scope with the same project I find it very interesting, so I will continue working on it, because of exams I can't focus on the frontend part, but I do commit that I've given my 100% to this project. I'll keep updating the project to increase it's usability.
+
