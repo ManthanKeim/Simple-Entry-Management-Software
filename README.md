@@ -17,6 +17,12 @@ information in MySQL Database, the host is informed about the visitor
 through mail and sms. Once the meeting is over, visitor checks out by 
 using the check-out option from the web-app.
 
+For Mailing the host, I've used Simple Mail Transfer Protocol(SMTP),
+but in the case of SMS, I've added the code for Twilio API, but due 
+to limitation of resources I'm unable to send SMS, but provided with
+the resources and the available phone number. This web-app is tested
+and can be extended for global user.
+
 ### Project Screenshots on LocalHost
 
 <img alt="image_1" src="working/Screenshot 2019-11-26 at 5.00.21 PM.png" width="700px">
