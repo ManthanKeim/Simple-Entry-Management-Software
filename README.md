@@ -3,4 +3,4 @@ Simple Entry Management Software
 
 features to be added: messaging & OTP
 
-R
+REJ
